@@ -1,5 +1,6 @@
 # Data Quality Toolkit (aka DQKit)
-![DQKit](images\data_validation_report.png)
+
+<img src="images/data_validation_report.png" alt="DQKit" width="600" height="600" />
 
 ## What does it do?
 DQKit is a lightweight python tool built for data analysts and scientist who want to validate, profile and understand their datasets quickly. DQKit focuses on four things
