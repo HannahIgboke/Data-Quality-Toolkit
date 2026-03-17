@@ -1,15 +1,15 @@
-# Data Quality Toolkit (aka dqkit)
-Think about it as the easy-to-use tool that gives you details about the quality of your dataset in a format that's easy to read, easy to share and easy to act on.
+# Data Quality Toolkit (aka DQKit)
+![DQKit](images\data_validation_report.png)
 
 ## What does it do?
-dqkit is a lightweight python tool built for data analysts and scientist who want to validate, profile and understand their datasets quickly. dqkiot focuses on four things
+DQKit is a lightweight python tool built for data analysts and scientist who want to validate, profile and understand their datasets quickly. DQKit focuses on four things
 
 - Dataset summary: number of rows, number of columns, total memory usage, and when the report was generated
 - Schema validation: compares your current dataset against a reference schema to detect drift in column names and data types. Flags missing columns, unexpected columns, and dtype mismatches with clear, actionable labels
 - Quality checks: tracks missing values with severity levels, duplicate rows, and cardinality analysis with notes on potential usefulness in machine learning models
 - Memory Usage: total memory consumption for the dataset plus a per-column breakdown, useful when working with large datasets
 
-The fun part is that all results are compiled into a shareable HTML report that can be generated with a single method call.
+The interesting part is that all results are compiled into a shareable HTML report that can be generated easily.
 
 # Project structure
 ```
@@ -29,6 +29,8 @@ dqkit/
     data/
         airbnb_reference.csv        - sample reference schema dataset
         AB_NYC_2019.csv             - sample current dataset (NYC Airbnb 2019)
+    images/
+        data_validation_report.png  - a snapshot of the Report
     try_it.py                       - example script demonstrating end-to-end usage
     report_output.html
     requirements.txt
@@ -65,17 +67,17 @@ from dqkit.schema_validator import SchemaValidator
 from dqkit.quality_checker import Quality
 from dqkit.report import Report
 
-# Load datasets directly from CSV
+#load datasets directly from csv and validate schema
 sv = SchemaValidator.from_csv("data/AB_NYC_2019.csv", "data/airbnb_reference.csv")
 
-# Run quality checks on the current dataset
+#run quality checks on the current dataset
 quality = Quality(sv.df)
 
-# Generate the HTML report
+#generate the HTML report
 report = Report(sv, quality)
 report.generate()
 
-# Open report_output.html in your browser
+#open report_output.html in your browser
 ```
 
 Or if you already have your dataframes loaded:
@@ -86,7 +88,8 @@ from dqkit.schema_validator import SchemaValidator
 from dqkit.quality_checker import Quality
 from dqkit.report import Report
 
-df_curr = pd.read_csv("data/AB_NYC_2019.csv")
+#replace the files names and paths with yours
+df_curr = pd.read_csv("data/AB_NYC_2019.csv") 
 df_ref = pd.read_csv("data/airbnb_reference.csv")
 
 sv = SchemaValidator(df_curr, df_ref)
@@ -98,12 +101,12 @@ report.generate()
 
 ## Modules
 1. BaseCheck
-This is an abstract class that all the chers inherit from. Why is it important? This is because it enforces a run method on every subclass that inherits from it and validates that only pandas dataframes are accepted as input. Can be found in the base.py file.
+This is an abstract class that all the checks inherit from. Why is it important? This is because it enforces a run method on every subclass that inherits from it and validates that only pandas dataframes are accepted as input. Can be found in the base.py file.
 
 2. SchemaValidator
 What problem does it solve? 
 
-In most data workflows, you would observe that datasets rarely stay put (i.e the same). A column might be renamed, or a data type misrepresented. And often times we have two instances of our datasets that may be different in some way that we need to know. So, rather than manually retreiving thes columns and data types to cross check, the SchemaValidator does the job.
+In most data workflows, you would observe that datasets hardly stay the same. A column might be renamed, or a data type misrepresented. And often times we have two instances of our datasets that may be different in some way that we need to know. So, rather than manually retrieving these columns and data types to cross check, the SchemaValidator does the job.
 
 It's job description involves comparing your current dataset against a reference schema and immediately surfacing any differences from missing columns, unexpected columns and data type mismatches
 
@@ -123,7 +126,7 @@ The Report class ccepts a SchemaValidator and QualityChecker instance, runs both
 
 ## Sample Report
 
-When you run the report.generate() method, it produces a self-contained HTML file you can open in any browser or share with your team. The report includes can be seen below:
+When you run the report.generate() method, it produces a self-contained HTML file you can open in any browser or share with your team.
 
 ## Running Tests
 
@@ -131,6 +134,6 @@ When you run the report.generate() method, it produces a self-contained HTML fil
 pytest tests/ -v
 ```
 
-## About
+## Finally...
 
-This was built as a portfolio project to demonstrate applied Object Oriented Programming (OOP) and testing in Python. And was designed for data analysts and scientists who want a fast, readable overview of their data before analysis or modelling.
+This was designed for data analysts and scientists who want a fast, readable overview of their data before analysis or modelling.

@@ -31,13 +31,14 @@ df_curr2 = pd.DataFrame(curr2)
 airbnb_curr = pd.read_csv("data/AB_NYC_2019.CSV")
 airbnb_ref = pd.read_csv("data/airbnb_reference.csv")
 
-https://github.com/HannahIgboke/Data-Quality-Toolkit
+
 
 # run_check = SchemaValidator(df_curr, df_ref)
 # print(run_check.run())
 
 # run_check2 = Quality(df_curr)
 # print(run_check2.run())
+
 # run_check3 = Quality(df_curr2)
 # print(run_check3.run())
 
@@ -52,12 +53,6 @@ report.generate()
 # print(str(quality))
 # print(repr(quality))
 # print(type(df_curr))
-# sv.df = "not a dataframe"
+
 
 # print(SchemaValidator.estimate_memory_usage(df_curr))
-
-# profile = ProfileReport(df_curr)
-
-# # save it as an HTML file you can open in your browser
-# profile.to_file("profile_report.html")
-

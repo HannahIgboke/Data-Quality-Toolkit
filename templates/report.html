@@ -31,7 +31,6 @@
             padding: 0;
         }
 
-        /* HERO HEADER */
         .hero {
             background: linear-gradient(135deg, #0f0f13 0%, #1a1030 50%, #0f0f13 100%);
             border-bottom: 1px solid var(--border);
@@ -118,7 +117,6 @@
         .meta-value.accent2 { color: var(--accent2); }
         .meta-value.accent3 { color: var(--accent3); }
 
-        /* MAIN CONTENT */
         .main {
             padding: 48px 0;
         }
@@ -187,7 +185,6 @@
         .badge-count.issues { background: rgba(247,113,106,0.15); color: var(--danger); border: 1px solid rgba(247,113,106,0.2); }
         .badge-count.ok { background: rgba(78,205,196,0.15); color: var(--success); border: 1px solid rgba(78,205,196,0.2); }
 
-        /* CARDS GRID */
         .cards-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -214,7 +211,6 @@
             margin-bottom: 12px;
         }
 
-        /* TABLE */
         .table-wrap {
             background: var(--surface);
             border: 1px solid var(--border);
@@ -281,7 +277,6 @@
         .tag-success { background: rgba(78,205,196,0.15); color: var(--success); border: 1px solid rgba(78,205,196,0.2); }
         .tag-purple { background: rgba(124,106,247,0.15); color: var(--accent); border: 1px solid rgba(124,106,247,0.2); }
 
-        /* STAT ROW */
         .stat-row {
             display: flex;
             gap: 16px;
@@ -310,7 +305,6 @@
             font-family: 'DM Mono', monospace;
         }
 
-        /* EMPTY STATE */
         .empty-state {
             padding: 24px 20px;
             text-align: center;
@@ -319,7 +313,6 @@
             font-size: 13px;
         }
 
-        /* MEMORY BAR */
         .mem-bar-wrap {
             margin-top: 6px;
             height: 4px;
@@ -334,7 +327,6 @@
             border-radius: 2px;
         }
 
-        /* FOOTER */
         .footer {
             border-top: 1px solid var(--border);
             padding: 24px 0;
@@ -391,7 +383,7 @@
             </div>
         </div>
 
-        <!-- Missing & Unexpected Columns -->
+        <!-- Missing and Unexpected Columns -->
         <div class="cards-grid">
             <div class="table-wrap">
                 <div class="table-title">Missing Columns</div>
@@ -562,9 +554,9 @@
                     <td>{{ count }}</td>
                     <td>
                         {% if count == 1 %}
-                        <span class="tag tag-danger">No variance — consider dropping before use in an ML model as it adds noise</span>
+                        <span class="tag tag-danger">No variance. Consider dropping before use in an ML model as it adds noise</span>
                         {% elif count == num_rows %}
-                        <span class="tag tag-warning">All values unique — likely an ID column. Consider dropping as it provides no predictive value to an ML model</span>
+                        <span class="tag tag-warning">All values are unique. This is likely an ID column. Consider dropping as it provides no predictive value to an ML model</span>
                         {% else %}
                         <span class="tag tag-success">ok</span>
                         {% endif %}

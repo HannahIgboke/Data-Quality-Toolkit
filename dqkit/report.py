@@ -21,4 +21,4 @@ class Report():
             )
         with open("report_output.html", "w", encoding="utf-8") as f:
             print(output, file = f)
-        print("Report saved!")
+        print("Report saved")
